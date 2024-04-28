@@ -1,16 +1,16 @@
 # T-FLIPFLOP-POSEDGE
 
-**AIM:**
+## AIM:
 
 To implement  T flipflop using verilog and validating their functionality using their functional tables
 
-**SOFTWARE REQUIRED:**
+## SOFTWARE REQUIRED:
 
 Quartus prime
 
-**THEORY**
+## THEORY
 
-**T Flip-Flop**
+## T Flip-Flop
 
 T flip-flop is the simplified version of JK flip-flop. It is obtained by connecting the same input ‘T’ to both inputs of JK flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of T flip-flop is shown in the following figure.
 
@@ -26,17 +26,62 @@ Here, Qtt & Qt+1t+1 are present state & next state respectively. So, T flip-flop
  
 From the above characteristic table, we can directly write the next state equation as Q(t+1)=T′Q(t)+TQ(t)′ ⇒Q(t+1)=T⊕Q(t)
 
-**Procedure**
+## Procedure
 
-/* write all the steps invloved */
+1.Define Module: Define a Verilog module for the T flip-flop with inputs (T, CLK) and outputs (Q, Q_bar).
 
-**PROGRAM**
+2.Declare Inputs and Outputs: Declare input and output ports for the module.
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+3.Implement Flip-Flop Logic: Write Verilog code to implement the T flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
+
+4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the T flip-flop under different input conditions.
+
+5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (T, CLK) to cover all possible input states.
+
+6.Verify Output Behavior: Verify that the output behavior of the T flip-flop matches the expected behavior defined by its functional table.
+
+7.Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes.
+
+
+## PROGRAM
+
+/* Program for flipflops and verify its truth table in quartus using Verilog programming.
+
+ Developed by:VARSHINI D
+ 
+ RegisterNumber:212223230234
 */
 
-**RTL LOGIC FOR FLIPFLOPS**
+module ex09( input clk, rst_n, input t, 
+output reg q, 
+output q_bar 
+); 
+always@(posedge clk) 
+begin // for synchronous reset 
+ //WRITE THE CONDITION OF TOGGLE FLIPFLOP HERE WITH RESET AND 
+ //IMPLEMENT THE T LOGIC BY CONDITIONAL OPERATOR 
+if(!rst_n) 
+q<=0; 
+else 
+begin 
+q<=(t?~q:q); 
+end 
+end 
+assign q_bar = ~q; 
+endmodule
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
 
-**RESULTS**
+
+## RTL LOGIC FOR FLIPFLOPS
+
+![9o1](https://github.com/varshinidevaraju/T-FLIPFLOP-POSEDGE/assets/144870750/dc29a6b9-a93a-47bd-bd1a-27980e3f1c15)
+
+
+## TIMING DIGRAMS FOR FLIP FLOPS
+
+![9o2](https://github.com/varshinidevaraju/T-FLIPFLOP-POSEDGE/assets/144870750/55aa3b5c-6ad9-4a59-ab66-d368233190ee)
+
+
+## RESULTS
+
+Hence, T flipflop using verilog and validating their functionality using their functional tables is implemented.
